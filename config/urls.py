@@ -18,5 +18,5 @@ from django.urls import path, include
 from pshs import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('pshs/', include('pshs.urls')),
+    path('', include('pshs.urls')),
 ]
