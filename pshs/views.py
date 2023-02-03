@@ -215,3 +215,8 @@ def delete_recurit(request, recurit_id):
     recurit = get_object_or_404(Recurit, id=recurit_id)
     recurit.delete()
     return redirect('pshs:recurit')
+
+def delete_attendance(request, attendance_id):
+    attendance = get_object_or_404(Attendance, id=attendance_id)
+    attendance.delete()
+    return redirect('pshs:attendance')
