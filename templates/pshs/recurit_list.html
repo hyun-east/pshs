@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container my-3">
+    <a>실험/수행 파트너나 공동구매를 모집하는 페이지 입니다. </a>
+    <p></p>
+    <table class="table">
+        <thead>
+        <tr class="table-dark">
+            <th>번호</th>
+            <th>제목</th>
+            <th>이름</th>
+            <th>이메일</th>
+            <th>작성 일시</th>
+            <th>삭제</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% if recurit_list %}
+        {% for recurit in recurit_list %}
+        <tr>
+            <td>{{ forloop.counter}}</td>
+            <td>
+                <a href="{% url 'pshs:recurit_detail' recurit.id %}">{{ recurit.subject }}</a>
+            </td>
+            <td>{{ recurit.name }}</td>
+
+            <td>
+                {{ recurit.email }}
+            </td>
+            <td>
+                {{recurit.create_date}}
+            </td>
+            <td>
+                <a href="{% url 'pshs:delete_recurit' recurit.id %}" class="btn btn-primary">삭제</a>
+            </td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <tr>
+            <td colspan="3">모집 요청이 없습니다.</td>
+        </tr>
+        {% endif %}
+        </tbody>
+    </table>
+    <a href="{% url 'pshs:recurit_create' %}" class="btn btn-primary">모집등록하기</a>
+</div>
+{% endblock %}

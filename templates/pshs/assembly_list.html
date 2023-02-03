@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container my-3">
+    <table class="table">
+        <thead>
+        <tr class="table-dark">
+            <th>번호</th>
+            <th>이름</th>
+            <th>메일</th>
+            <th>시작 시간</th>
+            <th>종료 시간</th>
+            <th>삭제</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if assembly_list %}
+        {% for assembly in assembly_list %}
+        <tr>
+            <td>{{ forloop.counter}}</td>
+            <td>
+                <a href="{% url 'pshs:assembly_detail' assembly.id %}">{{ assembly.name }}</a>
+            </td>
+            <td>{{ assembly.email }}</td>
+            <td>{{ assembly.start_time }}</td>
+            <td>{{ assembly.end_time }}</td>
+            <td>
+                <a href="{% url 'pshs:delete_assembly' assembly.id %}" class="btn btn-primary">삭제</a>
+            </td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <tr>
+            <td colspan="3">집회가 없습니다.</td>
+        </tr>
+        {% endif %}
+        </tbody>
+    </table>
+    <a href="{% url 'pshs:assembly_create' %}" class="btn btn-primary">집회등록하기</a>
+</div>
+{% endblock %}

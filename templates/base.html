@@ -1,0 +1,46 @@
+{% load static %}
+<!doctype html>
+<html lang="ko">
+<head>
+    <div class="container my-3">
+        <h1><b><strong>풍산고등학교</strong></b></h1>
+        <h5>학교 홈페이지 개선 프로젝트</h5>
+        <a></a>
+        <a href="{% url 'pshs:index' %}" class="btn btn-dark">질문 게시판</a>
+        <a href="{% url 'pshs:assembly' %}" class="btn btn-dark">집회 신청</a>
+        <a href="{% url 'pshs:recurit' %}" class="btn btn-dark">실험/수행/공구</a>
+        <a href="{% url 'pshs:attendance' %}" class="btn btn-dark">출석체크</a>
+        <hr>
+    </div>
+    <!--required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width initial-scale=1, shrink-to-fit=no">
+    <!--Bootstrap CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <!--pshs CSS-->
+    <title>POONGSAN HIGHSCHOOL</title>
+</head>
+<body>
+<!--기본 템플릿 안에 삽입될 내용 Start -->
+{% block content %}
+{% endblock %}
+<!--기본 템플릿 안에 삽입될 내용 End-->
+<footer>
+    <div class="container my-3">
+        <hr>
+        <h3><center>풍산고등학교 홈페이지 개선 프로젝트</center></h3>
+        <p></p>
+        <a><center>풍산고등학교 3학년 김현동</center></a>
+        <a><center>khd306090@naver.com</center></a>
+        <a><center>경상북도 안동시 풍산읍 풍산중앙길 39, 풍산중고등학교</center></a>
+        <a><center>
+        학교 구성원이 이용한기 편리한 홈페이지를 구현하기 위해 제작한 홈페이지 입니다.본 페이지의 저작권은 김현동에게 있으며 무단으로 도용할 수 없습니다.
+        </center></a>
+        <a><center>⋅ © 2023. 김현동 All rights reserved.</center></a>
+        <a><center>This page is powered by Django</center></a>
+    </div>
+
+</footer>
+</body>
+</html>

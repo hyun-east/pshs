@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container my-3">
+    <h2 class="border-bottom py-2">{{ assembly.name }}</h2>
+    <div class="card my-3">
+        <div class="card-body">
+            <div class="card-text" style="white-space: pre-line;">내용: {{ assembly.content }}</div>
+            <div class="card-text" style="white-space: pre-line;">이메일 주소: {{ assembly.email }}</div>
+            <div class="card-text" style="white-space: pre-line;">시작 시간: {{ assembly.start_time }}</div>
+            <div class="card-text" style="white-space: pre-line;">종료 시간: {{ assembly.end_time }}</div>
+            <div class="d-flex justify-content-end">
+            </div>
+        </div>
+    </div>
+    <a href="{% url 'pshs:allow' assembly.id %}" class="btn btn-primary">집회허가</a>
+    <a href="{% url 'pshs:disallow' assembly.id %}" class="btn btn-primary">집회반려</a>
+</div>
+
+{% endblock %}

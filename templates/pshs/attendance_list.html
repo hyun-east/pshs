@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container my-3">
+    <a href="{% url 'pshs:all_jasup' %}" class="btn btn-primary"> 전원 자습실</a>
+    <a href="{% url 'pshs:all_assemble' %}" class="btn btn-primary"> 전원 집회</a>
+    <a href="{% url 'pshs:all_classroom' %}" class="btn btn-primary"> 전원 수업</a>
+    <p></p>
+    <table class="table">
+        <thead>
+        <tr class="table-dark">
+            <th>학번</th>
+            <th>이름</th>
+            <th>자습실</th>
+            <th>번호</th>
+            <th>출석 위치</th>
+            <th>출석 시간</th>
+            <th>자습실</th>
+            <th>집회</th>
+            <th>수업</th>
+            <th>결석</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if attendance_list %}
+        {% for attendance in attendance_list %}
+        <tr>
+            <td>{{ attendance.class_num}}</td>
+            <td>{{attendance.name}}</td>
+            <td>{{attendance.lib_room}}</td>
+            <td>{{attendance.lib_num}}</td>
+            <td>{{attendance.location}}</td>
+            <td>{{attendance.check_time}}</td>
+            <td>
+                <a href="{% url 'pshs:jasup' attendance.id %}" class="btn btn-dark"> 자습실</a>
+            </td>
+            <td>
+                <a href="{% url 'pshs:assemble' attendance.id %}" class="btn btn-dark"> 집회</a>
+            </td>
+            <td>
+                <a href="{% url 'pshs:classroom' attendance.id %}" class="btn btn-dark"> 수업</a>
+            </td>
+            <td>
+                <a href="{% url 'pshs:absent' attendance.id %}" class="btn btn-dark"> 결석</a>
+            </td>
+
+        </tr>
+        {% endfor %}
+        {% else %}
+        <tr>
+            <td colspan="3">학생이 없습니다.</td>
+        </tr>
+        {% endif %}
+        </tbody>
+    </table>
+    <a href="{% url 'pshs:attendance_create' %}" class="btn btn-primary">학생등록하기</a>
+</div>
+{% endblock %}
